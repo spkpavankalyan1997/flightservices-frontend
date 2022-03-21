@@ -1,0 +1,34 @@
+<div class="panel panel-primary" *ngIf="isLoggedIn">
+
+
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Airline Code</th>
+          <th scope="col">Airline Desc</th>
+          <th scope="col">Instrument</th>
+          <th scope="col">Status</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Update</th>
+          <th scope="col">Block</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let airline of airlines|async">
+          <td><input style="width: 100px;" [(ngModel)]="airline.code" value={{airline.code}}></td>
+          <td><input style="width: 100px;" [(ngModel)]="airline.description" value={{airline.description}}></td>
+          <td><input style="width: 100px;" [(ngModel)]="airline.instrument" value={{airline.instrument}}></td>
+          <td><input style="width: 100px;" [(ngModel)]="airline.status" value={{airline.status}} readonly></td>
+          <td><input style="width: 100px;" [(ngModel)]="airline.rating" value={{airline.rating}}></td>
+          <td><button (click)="deleteAirline(airline.id)" class="btn btn-danger">Delete</button></td>
+          <td><button (click)="modifyAirline(airline)" class="btn btn-info" style="margin-right: 10px">Update</button>
+          </td>
+          <td><button (click)="blockAirline(airline.id)" class="btn btn-info" style="margin-right: 10px">Block</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

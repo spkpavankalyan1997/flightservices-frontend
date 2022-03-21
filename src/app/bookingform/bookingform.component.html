@@ -1,0 +1,50 @@
+<div class="panel panel-primary" *ngIf="isLoggedIn">
+    <h3 style="text-align: center;">Ticket Booking</h3>
+    <div style="margin-left: 10px;" class="form-row">
+        <label>From Place:</label>
+        <select style="margin-left: 10px" [(ngModel)]="fromPlace">
+            <option *ngFor="let airport of airports" [value]="airport.code">{{airport.name}}</option>
+        </select>
+        <label style="margin-left: 10px">To Place:</label>
+        <select style="margin-left: 10px" [(ngModel)]="toPlace">
+            <option *ngFor="let airport of airports" [value]="airport.code">{{airport.name}}</option>
+        </select>
+        <label style="margin-left: 10px">Date:</label>
+        <input type="datetime-local" style="margin-left: 10px" [(ngModel)]="selectedDate">
+        <button (click)="getSearchedFlights()" style="margin-left: 10px" class="btn btn-info">Search Flights</button>
+        <button (click)="getAllFlights()" style="margin-left: 10px" class="btn btn-info">All Flights</button>
+        <div style="width: 400px;" class="alert alert-danger alert-dismissible fade show" role="alert"
+            *ngIf="isNotFutureDate">
+            <div class="form-row">
+                <label>Please select the future Date</label>
+                <button (click)="closeError()" type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </div>
+        <div class="panel-body" style="margin-top: 10px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Airline Code</th>
+                        <th scope="col">From City</th>
+                        <th scope="col">To City</th>
+                        <th scope="col">From Time</th>
+                        <th scope="col">To Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let flight of flights|async">
+                        <td><input [(ngModel)]="flight.airlineCode" value={{flight.airlineCode}} readonly></td>
+                        <td><input [(ngModel)]="flight.fromCity" value={{flight.fromCity}} readonly></td>
+                        <td><input [(ngModel)]="flight.toCity" value={{flight.toCity}} readonly></td>
+                        <td><input [(ngModel)]="flight.fromTime" value={{flight.fromTime}} readonly></td>
+                        <td><input [(ngModel)]="flight.toTime" value={{flight.toTime}} readonly></td>
+                        <td><button (click)="bookFlight(flight.id)" class="btn btn-info"
+                                style="margin-left: 10px">Book</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

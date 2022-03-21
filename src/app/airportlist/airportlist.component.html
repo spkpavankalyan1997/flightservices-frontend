@@ -1,0 +1,22 @@
+<div class="panel panel-primary" *ngIf="isLoggedIn">
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 150px;">Airport Code</th>
+          <th scope="col" style="width: 150px;">Airport Name</th>
+          <th scope="col" style="width: 150px;">Status</th>
+          <th scope="col" style="width: 150px;">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let airport of airports|async">
+          <td><input [(ngModel)]="airport.code"  style="width: 100px;" value={{airport.code}}></td>
+          <td><input [(ngModel)]="airport.name" value={{airport.name}} style="width: 150px;"></td>
+          <td><input [(ngModel)]="airport.status" value={{airport.status}}  style="width: 150px;" readonly></td>
+          <td><button (click)="deleteAirline(airport.id)" class="btn btn-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

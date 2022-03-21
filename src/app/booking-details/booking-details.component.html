@@ -1,0 +1,68 @@
+<div *ngIf="isLoggedIn">
+    <h3 style="text-align: center;">Booking Details</h3>
+
+    <div class="form-row">
+        <div style="margin-left: 20px;" class="form-group">
+            <label>Flight Id:</label>
+            <input class="form-control" value={{bookingdetails.flightID}} readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>From Place:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.fromPlace" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>To Place:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.toPlace" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>From Time:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.fromTime" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>To Time:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.toTime" readonly>
+        </div>
+    </div>
+    <div class="form-row">
+        <div style="margin-left: 20px;" class="form-group">
+            <label>UserID:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.userID" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>TotalAmount:</label>
+            <input class="form-control" type="number" [(ngModel)]="bookingdetails.totalAmount" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>TotalPassengers:</label>
+            <input class="form-control" type="number" [(ngModel)]="bookingdetails.totalPassengers" readonly>
+        </div>
+    </div>
+    <div>
+        <table style="margin-left: 20px;">
+            <thead>
+                <tr>
+                    <th class="form-group">Name:</th>
+                    <th class="form-group">Age:</th>
+                    <th class="form-group">Gender:</th>
+                    <th class="form-group">MealsType:</th>
+                    <th class="form-group">Tickettype:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let passenger of bookingdetails.passengers;index as i">
+                    <td><input class="form-control" [(ngModel)]="passenger.name" readonly>
+                    </td>
+                    <td><input class="form-control" type="number" [(ngModel)]="passenger.age" max="100" readonly>
+                    </td>
+                    <td><input class="form-control" [(ngModel)]="passenger.gender" max="100" readonly>
+                    </td>
+                    <td><input class="form-control" [(ngModel)]="passenger.mealsType" max="100" readonly>
+                    </td>
+                    <td><input class="form-control" [(ngModel)]="passenger.ticketType" max="100" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button style="margin-left: 580px;margin-top: 20px;" (click)="showbookingslist()" class="btn btn-info">Booking List</button>
+</div>

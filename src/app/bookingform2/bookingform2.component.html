@@ -1,0 +1,101 @@
+<div *ngIf="isLoggedIn">
+    <h3 style="text-align: center;">Booking Form</h3>
+
+    <div class="form-row">
+        <div style="margin-left: 20px;" class="form-group">
+            <label>AirLine Code:</label>
+            <input class="form-control" value={{flight.airlineCode}} readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>From Place:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.fromPlace" value={{flight.fromCity}} readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>To Place:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.toPlace" value={{flight.toCity}} readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>From Time:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.fromTime" value={{flight.fromTime}} readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>To Time:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.toTime" value={{flight.toTime}} readonly>
+        </div>
+    </div>
+    <div class="form-row">
+        <div style="margin-left: 20px;" class="form-group">
+            <label>UserID:</label>
+            <input class="form-control" [(ngModel)]="bookingdetails.userID" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>Ticket Type:</label>
+            <select class="form-control" (change)="amountCalcByMeals()" [(ngModel)]="ticketType" required>
+                <option value="B">Business Class</option>
+                <option value="NB">Non Business Class</option>
+            </select>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>Meals Type:</label>
+            <select class="form-control" (change)="amountCalcByMeals()" [(ngModel)]="mealsType" required>
+                <option value="VEG">Veg</option>
+                <option value="NONVEG">Non Veg</option>
+            </select>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>TotalAmount:</label>
+            <input class="form-control" type="number" [(ngModel)]="bookingdetails.totalAmount" readonly>
+        </div>
+        <div style="margin-left: 20px;" class="form-group">
+            <label>TotalPassengers:</label>
+            <input class="form-control" type="number" (change)="amountCalc()"
+                [(ngModel)]="bookingdetails.totalPassengers" min="1">
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div>
+            <label style="margin-left: 20px;">Please click on this to add passenger details:</label>
+            <button (click)="addPassengers()" class="btn btn-info">Add Passengers</button>
+            <table style="margin-left: 20px;">
+                <thead>
+                    <tr>
+                        <th class="form-group">Name:</th>
+                        <th class="form-group">Age:</th>
+                        <th class="form-group">Gender:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let passenger of passengers;index as i">
+                        <td><input class="form-control" [(ngModel)]="passenger.name" value={{passenger.name}} required>
+                        </td>
+                        <td><input class="form-control" type="number" [(ngModel)]="passenger.age"
+                                value={{passenger.age}} max="100" required>
+                        </td>
+                        <td> <select class="form-control" [(ngModel)]="passenger.gender" required>
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
+                            </select></td>
+                        <td><button style="margin-left: 10px;" (click)="removePassengers(i)"
+                                class="btn btn-danger">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-success" role="alert" *ngIf="bookingSuccessful">
+                Tickets Booked Successfully.
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="formNotFilled">
+                Fill the Form Completely.
+            </div>
+        </div>
+       
+        <div>
+            <button style="margin-left: 10px;" (click)="save()" class="btn btn-info">Book Tickets</button>
+            <button style="margin-left: 10px;" (click)="listScreen()" class="btn btn-info">Previous Page</button>
+            <button style="margin-left: 10px;" (click)="historyScreen()" class="btn btn-info">Booking History</button>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="isLoggedIn">
+    <div>
+        <h3 style="text-align: center;">Airports</h3>
+        <div class="form-row">
+            <div class="col-sm-2">
+                <label style="margin-left: 10px;">Airport Code:</label>
+                <input style="margin-left: 10px;" class="form-control" [(ngModel)]="airport.code">
+            </div>
+            <div class="col-sm-2">
+                <label style="margin-left: 10px;">Airport Name:</label>
+                <input style="margin-left: 10px;" class="form-control" [(ngModel)]="airport.name">
+            </div>
+        </div>
+        <button (click)="save()" style="margin-left: 10px;margin-top: 10px;margin-bottom: 10px;"
+            class="btn btn-info">Save</button>
+    </div>
+    <app-airportlist></app-airportlist>
+</div>

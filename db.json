@@ -1,0 +1,69 @@
+{
+  "airlines": [
+    {
+      "code": "Airasia",
+      "description": "Good to fly",
+      "rating": 0,
+      "status": "",
+      "instrument": "neo",
+      "id": 1
+    },
+    {
+      "code": "Airasia",
+      "description": "Good to fly",
+      "rating": 0,
+      "status": "",
+      "instrument": "neo",
+      "id": 2
+    },
+    {
+      "code": "Airasia",
+      "description": "Good to fly",
+      "rating": 0,
+      "status": "",
+      "instrument": "neo",
+      "id": 3
+    },
+    {
+      "code": "Airasia",
+      "description": "Good to fly",
+      "rating": 0,
+      "status": "",
+      "instrument": "neo",
+      "id": 4
+    },
+    {
+      "code": "Airasia",
+      "description": "Good to fly",
+      "rating": 5,
+      "status": "",
+      "instrument": "defrgth",
+      "id": 5
+    },
+    {
+      "code": "Airasia",
+      "description": "Good to fly",
+      "rating": 4.5,
+      "status": "",
+      "instrument": "defrgth",
+      "id": 6
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,67 @@
+<div *ngIf="isLoggedIn">
+    <h3 style="text-align: center;">Flights</h3>
+    <div class="form-row">
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">AirLine Code:</label>
+            <select style="margin-left: 10px" class="form-control" [(ngModel)]="flight.airlineCode">
+                <option value="">Please select</option>
+                <option *ngFor="let code of codes" [value]="code">{{code}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+
+            <label style="margin-left: 10px">From Place:</label>
+            <select style="margin-left: 10px" class="form-control" [(ngModel)]="flight.fromCity">
+                <option value="">Please Select</option>
+                <option *ngFor="let airport of airports" [value]="airport.code">{{airport.code}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">To Place:</label>
+            <select style="margin-left: 10px" class="form-control" [(ngModel)]="flight.toCity">
+                <option value="">Please Select</option>
+                <option *ngFor="let airport of airports" [value]="airport.code">{{airport.code}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">Business Seats</label>
+            <input style="margin-left: 10px" class="form-control" [(ngModel)]="flight.businessSeats">
+        </div>
+
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">Non Business Seats:</label>
+            <input style="margin-left: 10px" class="form-control" type="number" [(ngModel)]="flight.nonBusinessSeats">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-2.5">
+            <label style="margin-left: 10px">From Time:</label>
+            <input style="margin-left: 10px" class="form-control" type="datetime-local" [(ngModel)]="flight.fromTime">
+        </div>
+        <div class="col-sm-2.5">
+            <label style="margin-left: 10px">To Time:</label>
+            <input style="margin-left: 10px" class="form-control" type="datetime-local" [(ngModel)]="flight.toTime">
+        </div>
+
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">BusinessClassPrice:</label>
+            <input style="margin-left: 10px" class="form-control" type="number" [(ngModel)]="flight.businessClassPrice">
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">NonBusinessClassPrice:</label>
+            <input style="margin-left: 10px" class="form-control" type="number"
+                [(ngModel)]="flight.nonBusinessClassPrice">
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px">Rows:</label>
+            <input style="margin-left: 10px" class="form-control" type="number" [(ngModel)]="flight.noofRows">
+        </div>
+    </div>
+
+
+    <button (click)="save()" style="margin-left: 10px;margin-top: 10px;margin-bottom: 10px;"
+        class="btn btn-info">Save</button>
+
+
+    <app-flightlist></app-flightlist>
+</div>

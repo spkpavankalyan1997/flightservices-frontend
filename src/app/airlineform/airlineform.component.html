@@ -1,0 +1,24 @@
+<div *ngIf="isLoggedIn">
+    <h3 style="text-align: center;">Airlines</h3>
+    <div class="form-row">
+        <div class="col-sm-2">
+            <label style="margin-left: 10px;">AirLine Code:</label>
+            <input class="form-control" style="margin-left: 10px;" [(ngModel)]="airline.code">
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px;">AirLine Description:</label>
+            <input style="margin-left: 10px;" class="form-control" [(ngModel)]="airline.description">
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px;">Instrument:</label>
+            <input style="margin-left: 10px;" class="form-control" [(ngModel)]="airline.instrument">
+        </div>
+        <div class="col-sm-2">
+            <label style="margin-left: 10px;">Rating:</label>
+            <input style="margin-left: 10px;" class="form-control" type="number" max="5" [(ngModel)]="airline.rating">
+        </div>
+    </div>
+    <button (click)="save()" class="btn btn-info"
+        style="margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">Save</button>
+    <app-airlinelist></app-airlinelist>
+</div>

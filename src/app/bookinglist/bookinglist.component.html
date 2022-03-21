@@ -1,0 +1,41 @@
+<div class="panel panel-primary" *ngIf="isLoggedIn">
+    <h3 style="text-align: center;">Booking History</h3>
+    <div class="form-row">
+        <strong style="margin-left: 20px;">Enter Pnr:</strong>
+        <input style="margin-left: 10px;" placeholder="pnr" name="pnr" [(ngModel)]="pnr" type="number" required>
+        <button (click)="showBooking()" style="margin-left: 10px;" class="btn btn-info">Search Ticket</button>
+        <button (click)="showBookingList()" style="margin-left: 10px;" class="btn btn-info">All Bookings</button>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Pnr</th>
+                    <th scope="col">From Place</th>
+                    <th scope="col">To Place</th>
+                    <th scope="col">From Time</th>
+                    <th scope="col">To Time</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bookings of bookingslist;index as i">
+                    <td><input style="width: 100px;" [(ngModel)]="bookings.pnr" readonly></td>
+                    <td><input style="width: 100px;" [(ngModel)]="bookings.fromPlace" readonly></td>
+                    <td><input style="width: 100px;" [(ngModel)]="bookings.toPlace" readonly></td>
+                    <td><input style="width: 180px;" [(ngModel)]="bookings.fromTime" readonly></td>
+                    <td><input style="width: 180px;" [(ngModel)]="bookings.toTime" readonly></td>
+                    <td><input style="width: 100px;" [(ngModel)]="bookings.totalAmount" readonly></td>
+                    <td><input style="width: 100px;" [(ngModel)]="bookings.status" readonly></td>
+                    <td><button (click)="showBookingDetails(bookings.pnr)" class="btn btn-info"
+                            style="margin-left: 5px">Details</button>
+                    </td>
+                    <td><button (click)="cancelBooking(bookings.pnr)" class="btn btn-info"
+                            style="margin-left: 5px">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
